@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: ngsPipeR\nType: Package\nTitle: The Rockefeller Bioinformatics Resource Centre pipeline\nVersion: 0.9.159\nAuthors@R: c(person(\"Tom\", \"Developer\", role = c(\"aut\", \"cre\"),\n                     email = \"thomas.carroll@rockefeller.edu\"))\nAuthor: Thomas Carroll\nMaintainer: Thomas Carroll <thomas.carroll@rockefeller.edu>\nDescription: A pipeline for RNAseq alignment, QC and primary analysis\nURL: https://github.com/ThomasCarroll/ngsPipeR\nDepends: rmarkdown\nImports: AnnotationDbi, BiocParallel, Biostrings, BSgenome,\n         DelayedArray, GenomicAlignments, GenomicFeatures,\n         IRanges, Rsamtools, Rsubread,\n         rtracklayer, S4Vectors, SummarizedExperiment,\n         tximport, utils, GenomeInfoDbData , GenomeInfoDb ,\n         GenomicRanges, BSgenome.Hsapiens.UCSC.hg19 , org.Hs.eg.db,\n         dplyr, DESeq2, prettydoc, GO.db, topGO, DT, jsonlite,\n         pheatmap, plotly, tidyr, DEXSeq\nLicense: Custom\nEncoding: UTF-8\nLazyData: true\nRoxygenNote: 6.0.1\n",
+    "created" : 1522429212896.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4227329438",
+    "id" : "AC769B84",
+    "lastKnownWriteTime" : 1522539717,
+    "last_content_update" : 1522539717,
+    "path" : "~/Projects/Software/Github/ngsPipeR/DESCRIPTION",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Demux_Mint\"\nauthor: \"Tom Carroll\"\ndate: \"2/6/2018\"\noutput:\n  html_document:\n    theme: cerulean\n    highlight: espresso\n    toc: true\n    toc_float: true\n    code_folding: hide\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\n## Demux mint\n\n\n```{r cars}\nstatFiles <- dir(\"/Users/tcarroll/Projects/Results/Fuchs/shruti_Stats/\",\n                 pattern = \"Stats*\",\n                 full.names = T)\n\nstatFileCount <- list()\nfor(i in 1:length(statFiles)){\n  statFileCount[[i]] <- read.delim(statFiles[i],sep=\",\")\n}\n\nnamess <-gsub(\"_L002_R1_001.fastq.gz\",\"\",basename(statFiles))\ntyo <- NULL\nfor(l in 1:length(statFileCount)){\n  tee <- statFileCount[[l]]\n  colnames(tee)[-1] <- namess[l]\n  if(l == 1){\n    countMerged <- tee\n  }else{\n  countMerged <- merge(countMerged,tee,by=1,all=TRUE)\n  }\n}\n\nlibrary(tidyr)\nlibrary(ggplot2)\nlibrary(dplyr)\ncolnames(countMerged)[1] <- \"barcode\"\ntoPlot <- gather(countMerged,Sample,Frequency,-barcode)\nggplot(toPlot,aes(y=Frequency,x=Sample,col=barcode))+\n  geom_bar(stat=\"identity\",position='dodge',show.legend = FALSE)+\n  coord_flip()\n\nbarcodeFile <- \"/Users/tcarroll/Projects/Results/Fuchs/Shruti/barcode.csv\"\nbarcodesToFind <- read.delim(barcodeFile,sep=\",\",header = FALSE)\n\ntoPlot %>%  filter(barcode %in% barcodesToFind$V2) %>% \nggplot(aes(y=Frequency,x=Sample,fill=barcode))+\n  geom_bar(stat=\"identity\",position='dodge')+\n  coord_flip()\nlibrary(DT)\n\ntemp <- countMerged %>% filter(barcode %in% barcodesToFind$V2)\nrownames(temp) <- temp[,1]\ntemp <- temp[,-1]\n\n```\n\n\n",
+    "created" : 1521467500132.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2155898584",
+    "id" : "27EFE662",
+    "lastKnownWriteTime" : 1518559196,
+    "last_content_update" : 1518559196,
+    "path" : "~/Projects/Results/Fuchs/shruti.Rmd",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

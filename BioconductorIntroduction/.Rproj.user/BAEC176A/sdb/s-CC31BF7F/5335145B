@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "AsSlides <- TRUE\n\nlibrary(rmarkdown)\nsetwd(\"/Users/tcarroll/Projects/Software/Github/New_RUPlotting_In_R/\")\nrender(\"r_course/ggplot2.Rmd\",output_format = \"xaringan::moon_reader\")\nrender(\"r_course/basePlotting.Rmd\",output_format = \"xaringan::moon_reader\")\nrender(\"r_course/ggplot2.Rmd\",output_format = \"html_document\",output_dir = \"r_course/presentations/singlepage//\")\nrender(\"r_course/basePlotting.Rmd\",output_format = \"html_document\",output_dir = \"r_course/presentations/singlepage//\")\nknitr::purl(\"r_course/ggplot2.Rmd\")\nknitr::purl(\"r_course/basePlotting.Rmd\")",
+    "created" : 1521403086328.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3584662497",
+    "id" : "5335145B",
+    "lastKnownWriteTime" : 1521664931,
+    "last_content_update" : 1521664931371,
+    "path" : "~/Documents/compile.R",
+    "project_path" : null,
+    "properties" : {
+        "source_window_id" : ""
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

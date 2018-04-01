@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"ATACQC\"\nauthor: \"Tom Carroll\"\ndate: \"3/22/2018\"\noutput: html_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE,eval=TRUE)\n```\n\n## ATACQC\n\n```{r cars,warning=FALSE,message=FALSE}\nbamDir <- \"/rugpfs/fs0/ruit/scratch/tcarroll/Let2018_AtaC_updated/BAMs/\"\nlibrary(Rsamtools)\nlibrary(ggplot2)\nlibrary(magrittr)\n\nbamsToCount <- dir(bamDir,pattern = \"Sorted.*.bam$\",full.names = TRUE)\nbamsToCount <- bamsToCount[!grepl(\"MACS\",bamsToCount)]\n# bamRes <- sapply(bamsToCount,function(x)idxstatsBam(x) %>% dplyr::select(mapped) %>% .$mapped) %>% data.frame\nbamRes <- lapply(bamsToCount,function(x)idxstatsBam(x))\n\nfor(i in 1:length(bamRes)){\n  if(i == 1){\n    toMerge <- bamRes[[i]] %>% dplyr::select(seqnames,mapped)\n  }else{\n    sss <- bamRes[[i]] %>% dplyr::select(seqnames,mapped)\n    toMerge <- merge(toMerge,sss,by=1,all=TRUE)\n  }\n}\ncolnames(toMerge)[-1] <- gsub(\"Sorted_|\\\\.bam\",\"\",basename(bamsToCount))\n\ntoMerge %>% tidyr::gather(Sample,Mapped,-seqnames) %>%\n  ggplot(aes(seqnames,Mapped,fill=seqnames))+geom_bar(stat=\"identity\")+coord_flip()+facet_wrap(~Sample)+theme_bw()\n\n\n\n```\n\n\n```{r cars2,warning=FALSE,message=FALSE}\nstatsDir <- \"/rugpfs/fs0/ruit/scratch/tcarroll/Let2018_AtaC_updated/stats/\"\nlibrary(Rsamtools)\nlibrary(ggplot2)\nlibrary(magrittr)\n\nbamsToCount <- dir(statsDir,pattern=\"*.correctFrags\",full.names = TRUE)\n\n\n#bamsToCount <- bamsToCount[!grepl(\"MACS\",bamsToCount)]\n# bamRes <- sapply(bamsToCount,function(x)idxstatsBam(x) %>% dplyr::select(mapped) %>% .$mapped) %>% data.frame\nbamRes <- lapply(bamsToCount,function(x)read.delim(x,sep=\" \"))\n\nfor(i in 1:length(bamRes)){\n  if(i == 1){\n    toMerge <- bamRes[[i]]\n  }else{\n    sss <- bamRes[[i]]\n    toMerge <- merge(toMerge,sss,by=1,all=TRUE)\n  }\n}\ncolnames(toMerge)[-1] <- gsub(\"Sorted_|\\\\.correctFrags\",\"\",basename(bamsToCount))\n\nieu <- toMerge %>% tidyr::gather(Sample,Count,-InsertSize) %>%\n  ggplot(aes(x=InsertSize,y=Count))+geom_line()+facet_wrap(~Sample)\nieu+theme_bw()\n\nieu+ scale_y_continuous(trans='log2')+theme_bw()\n\n\n```\n\n```{r cars3,warning=FALSE,message=FALSE}\nstatsDir <- \"/rugpfs/fs0/ruit/scratch/tcarroll/Let2018_AtaC_updated/stats/\"\nlibrary(Rsamtools)\nlibrary(ggplot2)\nlibrary(magrittr)\nlibrary(soGGi)\n\nbamsToCountMono <- dir(statsDir,pattern=\"*_monoNuc.RData\",full.names = TRUE)\nbamsToCountFree <- dir(statsDir,pattern=\"*_NucFree.RData\",full.names = TRUE)\n\nfor(i in 1:length(bamsToCountMono)){\n  load(bamsToCountMono[i])\n  p1 <- plotRegion(monoNuc)\n  print(p1)\n  load(bamsToCountFree[i])\n  p2 <- plotRegion(nucFree)\n  print(p2)\n}\n\n```\n",
+    "created" : 1521740199123.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "399968564",
+    "id" : "7E705026",
+    "lastKnownWriteTime" : 1521987357,
+    "last_content_update" : 1521987357692,
+    "path" : "~/Projects/Software/Github/ngsPipeR/inst/extdata/ATACQC_let.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

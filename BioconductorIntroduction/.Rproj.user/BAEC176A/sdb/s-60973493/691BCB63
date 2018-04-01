@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# Contig names.\n\nWe can also retreive contig lengths using **seqlengths()** function.\n\n```{r contiglengths, echo=TRUE,eval=TRUE,collapse=FALSE}\ncontigLengths <- seqlengths(BSgenome.Mmusculus.UCSC.mm10)\ncontigLengths[1:4]\n```\n",
+    "created" : 1522612863392.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "1793894853",
+    "id" : "691BCB63",
+    "lastKnownWriteTime" : 6,
+    "last_content_update" : 1522612865447,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

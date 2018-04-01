@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "AsSlides <- TRUE\n\nlibrary(rmarkdown)\nsetwd(\"/Users/tcarroll/Projects/Software/Github/Bioconductor_Introduction//\")\nrender(\"bioconductor_introduction.Rmd\",output_format = \"html_document\",output_dir = \"./\")\n\nrender(\"r_course/ggplot2.Rmd\",output_format = \"xaringan::moon_reader\")\nrender(\"r_course/basePlotting.Rmd\",output_format = \"xaringan::moon_reader\")\nrender(\"r_course/ggplot2.Rmd\",output_format = \"html_document\",output_dir = \"r_course/presentations/singlepage//\")\nrender(\"r_course/basePlotting.Rmd\",output_format = \"html_document\",output_dir = \"r_course/presentations/singlepage//\")\nknitr::purl(\"r_course/ggplot2.Rmd\")\nknitr::purl(\"r_course/basePlotting.Rmd\")\n\n\nrender(\"r_course/ggplot2.Rmd\",output_format = \"html_document\",output_dir = \"r_course/presentations/singlepage//\")\n",
+    "created" : 1521402623019.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1574140671",
+    "id" : "EC621714",
+    "lastKnownWriteTime" : 1522607474,
+    "last_content_update" : 1522607474819,
+    "path" : "~/Documents/compile2.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

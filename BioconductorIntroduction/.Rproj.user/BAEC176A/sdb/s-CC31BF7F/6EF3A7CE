@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(soGGi)\nlibrary(TxDb.Hsapiens.UCSC.hg19.knownGene)\nlibrary(Rsamtools)\nTSSs <- resize(genes(TxDb.Hsapiens.UCSC.hg19.knownGene),fix=\"start\",1)\nlibrary(soGGi)\nTSSs <- TSSs[seqnames(TSSs) %in% seqlevels(BamFile(\"~/Projects/Results/SashaT/newBrd4ChIP/Sorted_Empty_1.bam\")),]\nTSSs <- keepSeqlevels(TSSs,seqlevels(BamFile(\"~/Projects/Results/SashaT/newBrd4ChIP/Sorted_Empty_1.bam\")))\ngScores <- genes(TxDb.Hsapiens.UCSC.hg19.knownGene)\ngScores <- gScores[seqnames(gScores) %in% seqlevels(BamFile(\"~/Projects/Results/SashaT/newBrd4ChIP/Sorted_Empty_1.bam\")),]\ngScores <- keepSeqlevels(gScores,seqlevels(BamFile(\"~/Projects/Results/SashaT/newBrd4ChIP/Sorted_Empty_1.bam\")))\nlibrary(rtracklayer)\nexport.bed(gScores,\"~/Downloads/test.bed\")\n# Nucleosome free\nnucFree <- regionPlot(bamFile = \"~/Projects/Results/SashaT/newBrd4ChIP/Sorted_Empty_1.bam\",\n                      testRanges = gScores[seqnames(gScores) %in% \"chr1\"],\n                      style = \"region\",\n                      format=\"bam\",distanceAround = 100)\n\nnucFree2 <- regionPlot(bamFile = \"~/Projects/Results/SashaT/newBrd4ChIP/Sorted_WT_1.bam\",\n                      testRanges = TSSs,\n                      style = \"point\",\n                      format=\"bigwig\")\n",
+    "created" : 1521664934952.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2105115083",
+    "id" : "6EF3A7CE",
+    "lastKnownWriteTime" : 5788623466033139247,
+    "last_content_update" : 1521738213542,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
